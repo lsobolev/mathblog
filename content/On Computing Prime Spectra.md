@@ -6,7 +6,22 @@ I did ultimately quickly give up with this ambition in my algebra class; though 
 
 One important milestone one reaches in learning algebraic geometry is that $\Spec$ is functorial. More specifically, I mean that if we have a ring homomorphism $f: A \to B$, then we get an induced map on the spectra $$f^*: \Spec B \to \Spec A, \qquad \mathfrak{p} \longmapsto f^{-1}(\mathfrak{p})$$(be careful here; $\Spec$ is *contravariant!*). This already can get us quite far; it suggests a powerful approach to get a handle on rings we don't know how to work with, by leveraging on ones we do know how to work with. **Explore this more**.
 
-Just last semester of university, I was apart of a reading group on commutative algebra. And it was at the time of presenting on localisation that I had a realisation. Namely, whenever we have a ring homomorphism $f: A \to B$ and a multiplicatively closed subset $S \subseteq A$, we get a commutative diagram $$$$
+Just last semester of university, I was apart of a reading group on commutative algebra. And it was at the time of presenting on localisation that I had a realisation. Namely, whenever we have a ring homomorphism $f: A \to B$ and a multiplicatively closed subset $S \subseteq A$, we get a commutative diagram 
+```tikz
+\usepackage{tikz-cd}
+\begin{document}
+\begin{tikzcd} {f(S)^{-1}B} && B \\ \\ {S^{-1}A} && A \arrow["{\phi_B}"', from=1-3, to=1-1] \arrow["{S^{-1}f}", from=3-1, to=1-1] \arrow["f"', from=3-3, to=1-3] \arrow["{\phi_A}", from=3-3, to=3-1] \end{tikzcd}
+\end{document}
+```
+Since $\Spec$ is functorial, we can convert this entire diagram to another commutative diagram, 
+```tikz
+\usepackage{tikz-cd}
+\begin{document}
+\begin{tikzcd} {\Spec f(S)^{-1}B} && {\Spec B} \\ \\ {\Spec S^{-1}A} && {\Spec A} \arrow[from=1-1, to=1-3] \arrow[from=1-1, to=3-1] \arrow[from=1-3, to=3-3] \arrow[from=3-1, to=3-3] \end{tikzcd}
+\end{document}
+```
+The key key observation here is that this is a pullback diagram of sets.
+
 
 
 Together with the powerful technique of localisation from commutative algebra, we can get very far! 
