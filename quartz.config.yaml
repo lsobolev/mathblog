@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
 configuration:
-  pageTitle: Lucas Sobolev mathblog
+  pageTitle: Lucas Sobolev
   pageTitleSuffix: ""
   enableSPA: true
   enablePopovers: true
@@ -156,6 +156,8 @@ plugins:
     enabled: true
   - source: github:quartz-community/explorer
     enabled: true
+    options:
+      title: "blogs"
     layout:
       position: left
       priority: 50
