@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
 configuration:
-  pageTitle: "Lucas Sobolev <br><a href='/tags' style='font-size:0.85rem; font-weight:normal; text-decoration:underline; color:var(--secondary);'>🏷️ Browse by Tags</a>"
+  pageTitle: "Lucas Sobolev"
   pageTitleSuffix: ""
   enableSPA: true
   enablePopovers: true
@@ -230,8 +230,8 @@ plugins:
     enabled: true
     options:
       links:
+        "🏷️ Browse by Tags": /tags
         GitHub: https://github.com/jackyzha0/quartz
-        Discord Community: https://discord.gg/cRFFHYye7t
   - source: github:quartz-community/recent-notes
     enabled: false
   - source: github:quartz-community/spacer
@@ -295,17 +295,20 @@ layout:
         left: [page-title, spacer, search, darkmode, reader-mode, explorer]
         right: []
     content:
+      template: full-width
       positions:
         beforeBody: [breadcrumbs, article-title, content-meta, tag-list]
         left: [page-title, spacer, search, darkmode, reader-mode, explorer]
         right: []
     folder:
+      template: full-width
       exclude:
         - reader-mode
       positions:
         left: [page-title, spacer, search, darkmode, reader-mode, explorer]
         right: []
     tag:
+      template: full-width
       exclude:
         - reader-mode
       positions:
