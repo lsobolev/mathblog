@@ -17,3 +17,5 @@ Testing macro output: $\Spec$
 \end{document}
 ```
 
+Hello. Test. An equation; $$\Spec K = \{(0)\}.$$
+
