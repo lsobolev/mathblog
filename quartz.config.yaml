@@ -230,6 +230,7 @@ plugins:
     enabled: true
     options:
       links:
+        "🏷️ Browse by Tags": /tags
         "© Lucas Sobolev": "#"
   - source: github:quartz-community/recent-notes
     enabled: false
@@ -290,30 +291,54 @@ layout:
         right: []
     index:
       styles: |
-        .page .center { max-width: 100% !important; }
-        .page .body { grid-template-columns: var(--sidebar-width) 1fr !important; }
         footer p { display: none !important; } 
-        .tag-explorer-link { display: block; margin-top: 1.5rem; font-size: 0.9rem; font-weight: 600; opacity: 0.85; }
+        @media (min-width: 1200px) {
+          .page .right::after {
+            content: "🏷️ Browse by Tags";
+            display: block;
+            margin-top: 2rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+          }
+          .page .right {
+            cursor: pointer;
+          }
+        }
       positions:
         beforeBody: [breadcrumbs, article-title, content-meta]
         left: [page-title, spacer, search, darkmode, reader-mode, explorer]
         right: []
     content:
       styles: |
-        .page .center { max-width: 100% !important; }
-        .page .body { grid-template-columns: var(--sidebar-width) 1fr !important; }
         footer p { display: none !important; }
-        .tag-explorer-link { display: block; margin-top: 1.5rem; font-size: 0.9rem; font-weight: 600; opacity: 0.85; }
+        @media (min-width: 1200px) {
+          .page .right::after {
+            content: "🏷️ Browse by Tags";
+            display: block;
+            margin-top: 2rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+          }
+        }
       positions:
         beforeBody: [breadcrumbs, article-title, content-meta, tag-list]
         left: [page-title, spacer, search, darkmode, reader-mode, explorer]
         right: []
     folder:
       styles: |
-        .page .center { max-width: 100% !important; }
-        .page .body { grid-template-columns: var(--sidebar-width) 1fr !important; }
         footer p { display: none !important; }
-        .tag-explorer-link { display: block; margin-top: 1.5rem; font-size: 0.9rem; font-weight: 600; opacity: 0.85; }
+        @media (min-width: 1200px) {
+          .page .right::after {
+            content: "🏷️ Browse by Tags";
+            display: block;
+            margin-top: 2rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+          }
+        }
       exclude:
         - reader-mode
       positions:
@@ -321,10 +346,17 @@ layout:
         right: []
     tag:
       styles: |
-        .page .center { max-width: 100% !important; }
-        .page .body { grid-template-columns: var(--sidebar-width) 1fr !important; }
         footer p { display: none !important; }
-        .tag-explorer-link { display: block; margin-top: 1.5rem; font-size: 0.9rem; font-weight: 600; opacity: 0.85; }
+        @media (min-width: 1200px) {
+          .page .right::after {
+            content: "🏷️ Browse by Tags";
+            display: block;
+            margin-top: 2rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+          }
+        }
       exclude:
         - reader-mode
       positions:

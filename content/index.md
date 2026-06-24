@@ -21,3 +21,13 @@ Testing macro output: $\Spec$
 Hello. Test. An equation; $$\Spec K = \{(0)\}.$$
 # Heading 1
 # Heading 2
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const rightPane = document.querySelector(".page .right");
+    if (rightPane) {
+      rightPane.addEventListener("click", () => {
+        window.location.href = "/tags";
+      });
+    }
+  });
+</script>
