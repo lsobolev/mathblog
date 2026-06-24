@@ -1,6 +1,7 @@
 ---
-title: Welcome to Quartz
+title: Welcome to my mathblog!
 ---
+
 ```latex
 ---
 title: Welcome to my Math Blog
