@@ -285,26 +285,22 @@ layout:
       gap: 0.5rem
   byPageType:
     "404":
-      template: "full-width"
       positions:
         beforeBody: []
         left: []
         right: []
     content:
-      template: "full-width"
       positions:
         beforeBody: [breadcrumbs, article-title, content-meta, tag-list]
         left: [page-title, spacer, search, darkmode, reader-mode, explorer]
         right: []
     folder:
-      template: "full-width"
       exclude:
         - reader-mode
       positions:
         left: [page-title, spacer, search, darkmode, reader-mode, explorer]
         right: []
     tag:
-      template: "full-width"
       exclude:
         - reader-mode
       positions:
