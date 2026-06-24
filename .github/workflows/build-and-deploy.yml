@@ -1,0 +1,47 @@
+name: Build and deploy site
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install TeX Live and dvisvgm
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra texlive-xetex dvisvgm poppler-utils
+          dvisvgm --version
+
+      - name: Install npm dependencies
+        run: npm ci
+
+      - name: Build site with Quartz
+        run: npm run build:quartz
+        env:
+          NODE_ENV: production
+
+      - name: Render TikZ blocks to SVG and replace in HTML
+        run: |
+          BUILD_DIR=public node scripts/process-tikz.cjs
+        env:
+          USE_XELATEX: '0'
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+
