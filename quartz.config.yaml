@@ -57,6 +57,7 @@ plugins:
         light: github-light
         dark: github-dark
       keepBackground: false
+      ignoreLanguages: ["tikz"]
     order: 20
   - source: github:quartz-community/obsidian-flavored-markdown
     enabled: true
