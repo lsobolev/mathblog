@@ -16,7 +16,7 @@ Lucas: 1st one: For any $A$-module homomorphism $\alpha: M \to N$ such that elem
 ```tikz
 \usepackage{tikz-cd}
 \begin{document}
-\begin{tikzcd} M && N \ \ {S^{-1}M} \arrow["\alpha", from=1-1, to=1-3] \arrow["\iota"', from=1-1, to=3-1] \arrow["{\exist !}"', dashed, from=3-1, to=1-3] \end{tikzcd}
+\begin{tikzcd} M && N \\ \\ {S^{-1}M} \arrow["\alpha", from=1-1, to=1-3] \arrow["\iota"', from=1-1, to=3-1] \arrow["{\exists !}"', dashed, from=3-1, to=1-3] \end{tikzcd}
 \end{document}
 ```
 2nd one: For any $S^{-1}A$-module $N$, and $A$-module homomorphism $\alpha: M \to N$, there is a unique $S^{-1}A$-module homomorphism $S^{-1}M \to N$ such that 
