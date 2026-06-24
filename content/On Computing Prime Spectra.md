@@ -20,11 +20,7 @@ Since $\Spec$ is functorial, we can convert this entire diagram to another commu
 \begin{tikzcd} {\Spec f(S)^{-1}B} && {\Spec B} \\ \\ {\Spec S^{-1}A} && {\Spec A} \arrow[from=1-1, to=1-3] \arrow[from=1-1, to=3-1] \arrow[from=1-3, to=3-3] \arrow[from=3-1, to=3-3] \end{tikzcd}
 \end{document}
 ```
-The key key observation here is that this is a pullback diagram of sets.
-
-
-
-Together with the powerful technique of localisation from commutative algebra, we can get very far! 
+The key observation here is that this is a pullback diagram of sets. So specifically, $$\Spec f(S)^{-1}B = (f^*)^{-1}(\Spec S^{-1}A).$$So... How does this help? Well, let's return to our example earlier. Suppose that $R$ is a PID, and for simplicity, lets say that $K$ is its field of fractions. Then localising $R_{(0)} \cong K$ and $(R[x])_{(0)} \cong K[x]$ and so we have a commutative diagram, 
 
 
 
