@@ -63,13 +63,12 @@ function renderTikzToSvg(tikzCode, svgPath) {
   try {
     // Use pdflatex by default. Set env USE_XELATEX=1 to use xelatex instead.
     if (process.env.USE_XELATEX === '1') {
-      run(`xelatex -interaction=nonstopmode -halt-on-error -output-directory ${tmpDir} ${texPath}`);
+      run(`xelatex -no-pdf -interaction=nonstopmode -halt-on-error -output-directory ${tmpDir} ${texPath}`);
+      run(`dvisvgm --no-fonts ${tmpDir}/figure.xdv -o ${svgPath}`);
     } else {
-      run(`pdflatex -interaction=nonstopmode -halt-on-error -output-directory ${tmpDir} ${texPath}`);
+      run(`pdflatex -output-format=dvi -interaction=nonstopmode -halt-on-error -output-directory ${tmpDir} ${texPath}`);
+      run(`dvisvgm --no-fonts ${tmpDir}/figure.dvi -o ${svgPath}`);
     }
-    // Convert PDF to SVG using dvisvgm
-    // --no-fonts converts text to paths which avoids missing font issues
-    run(`dvisvgm --no-fonts --pdf ${pdfPath} -o ${svgPath}`);
   } finally {
     // cleanup temporary directory
     try { fs.rmSync(tmpDir, { recursive: true, force: true }); } catch (e) {}

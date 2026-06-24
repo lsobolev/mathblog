@@ -23,7 +23,7 @@ Lucas: 1st one: For any $A$-module homomorphism $\alpha: M \to N$ such that elem
 ```tikz
 \usepackage{tikz-cd}
 \begin{document}
-\begin{tikzcd} M && N \ \ {S^{-1}M} \arrow["\alpha", from=1-1, to=1-3] \arrow["\iota"', from=1-1, to=3-1] \arrow["{\exist!}"', dashed, from=3-1, to=1-3] \end{tikzcd}
+\begin{tikzcd} M && N \\ \\ {S^{-1}M} \arrow["\alpha", from=1-1, to=1-3] \arrow["\iota"', from=1-1, to=3-1] \arrow["{\exists!}"', dashed, from=3-1, to=1-3] \end{tikzcd}
 \end{document}
 ```
 Oh oops. I forgot an invertibility condition on N (I think).. Close enough. WAIT. Holy cow. I don't need an invertibility condition since $N$ is an $S^{-1}A$-module! They're invertible _by definition_ HAHAH. Sick... You know something else that is unsettling to me? Is that the universal property doesn't take into account how the map is defined. It entirely depends on the *codomain*.

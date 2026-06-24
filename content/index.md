@@ -9,9 +9,6 @@ comments: false
 <script type="text/tikz">
 \usepackage{tikz-cd}
 \begin{document}
-\begin{tikzcd} 
-M && N \\ 
-{S^{-1}M} \arrow["\alpha", from=1-1, to=1-3] \arrow["\iota"', from=1-1, to=3-1] \arrow["{\exist !}"', dashed, from=3-1, to=1-3] 
-\end{tikzcd}
+\begin{tikzcd} M && N \\ \\ {S^{-1}M} \arrow["\alpha", from=1-1, to=1-3] \arrow["\iota"', from=1-1, to=3-1] \arrow["{\exists !}"', dashed, from=3-1, to=1-3] \end{tikzcd}
 \end{document}
 </script>
