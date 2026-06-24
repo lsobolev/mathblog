@@ -230,8 +230,7 @@ plugins:
     enabled: true
     options:
       links:
-        "🏷️ Browse by Tags": /tags
-        GitHub: https://github.com/jackyzha0/quartz
+        "© Lucas Sobolev": "#"
   - source: github:quartz-community/recent-notes
     enabled: false
   - source: github:quartz-community/spacer
@@ -290,22 +289,42 @@ layout:
         left: []
         right: []
     index:
+      styles: |
+        .page .center { max-width: 100% !important; }
+        .page .body { grid-template-columns: var(--sidebar-width) 1fr !important; }
+        footer p { display: none !important; } 
+        .tag-explorer-link { display: block; margin-top: 1.5rem; font-size: 0.9rem; font-weight: 600; opacity: 0.85; }
       positions:
         beforeBody: [breadcrumbs, article-title, content-meta]
         left: [page-title, spacer, search, darkmode, reader-mode, explorer]
         right: []
     content:
+      styles: |
+        .page .center { max-width: 100% !important; }
+        .page .body { grid-template-columns: var(--sidebar-width) 1fr !important; }
+        footer p { display: none !important; }
+        .tag-explorer-link { display: block; margin-top: 1.5rem; font-size: 0.9rem; font-weight: 600; opacity: 0.85; }
       positions:
         beforeBody: [breadcrumbs, article-title, content-meta, tag-list]
         left: [page-title, spacer, search, darkmode, reader-mode, explorer]
         right: []
     folder:
+      styles: |
+        .page .center { max-width: 100% !important; }
+        .page .body { grid-template-columns: var(--sidebar-width) 1fr !important; }
+        footer p { display: none !important; }
+        .tag-explorer-link { display: block; margin-top: 1.5rem; font-size: 0.9rem; font-weight: 600; opacity: 0.85; }
       exclude:
         - reader-mode
       positions:
         left: [page-title, spacer, search, darkmode, reader-mode, explorer]
         right: []
     tag:
+      styles: |
+        .page .center { max-width: 100% !important; }
+        .page .body { grid-template-columns: var(--sidebar-width) 1fr !important; }
+        footer p { display: none !important; }
+        .tag-explorer-link { display: block; margin-top: 1.5rem; font-size: 0.9rem; font-weight: 600; opacity: 0.85; }
       exclude:
         - reader-mode
       positions:
