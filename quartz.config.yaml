@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
 configuration:
-  pageTitle: "Lucas Sobolev mathblog"
+  pageTitle: "Lucas Sobolev <br><a href='/tags' style='font-size:0.85rem; font-weight:normal; text-decoration:underline; color:var(--secondary);'>🏷️ Browse by Tags</a>"
   pageTitleSuffix: ""
   enableSPA: true
   enablePopovers: true
@@ -288,6 +288,11 @@ layout:
       positions:
         beforeBody: []
         left: []
+        right: []
+    index:
+      positions:
+        beforeBody: [breadcrumbs, article-title, content-meta]
+        left: [page-title, spacer, search, darkmode, reader-mode, explorer]
         right: []
     content:
       positions:
