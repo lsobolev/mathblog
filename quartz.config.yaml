@@ -219,10 +219,20 @@ plugins:
       priority: 5
       condition: not-index
   - source: github:quartz-community/comments
-    enabled: false
+    enabled: true
     options:
       provider: giscus
-      options: {}
+      options:
+        repo: lsobolev/mathblog
+        repoId: "R_kgDOTC5ziA"
+        category: General
+        categoryId: "DIC_kwDOTC5ziM4C_xZw"
+        mapping: pathname
+        strict: "0"
+        reactionsEnabled: "1"
+        inputPosition: bottom
+        theme: preferred_color_scheme
+        savedReplyPosition: top
     layout:
       position: afterBody
       priority: 10
