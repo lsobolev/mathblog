@@ -295,20 +295,17 @@ layout:
         left: [page-title, spacer, search, darkmode, reader-mode, explorer]
         right: []
     content:
-      template: full-width
       positions:
         beforeBody: [breadcrumbs, article-title, content-meta, tag-list]
         left: [page-title, spacer, search, darkmode, reader-mode, explorer]
         right: []
     folder:
-      template: full-width
       exclude:
         - reader-mode
       positions:
         left: [page-title, spacer, search, darkmode, reader-mode, explorer]
         right: []
     tag:
-      template: full-width
       exclude:
         - reader-mode
       positions:
