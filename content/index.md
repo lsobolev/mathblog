@@ -18,4 +18,5 @@ Testing macro output: $\Spec$
 ```
 
 Hello. Test. An equation; $$\Spec K = \{(0)\}.$$
-
+# Heading 1
+# Heading 2
