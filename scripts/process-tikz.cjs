@@ -39,7 +39,25 @@ function renderTikzToSvg(tikzCode, svgPath) {
   const texPath = path.join(tmpDir, 'figure.tex');
   const pdfPath = path.join(tmpDir, 'figure.pdf');
 
-  const texContent = WRAPPER.replace('% TIKZ_CONTENT_PLACEHOLDER', tikzCode);
+  let texContent = '';
+  if (tikzCode.includes('\\documentclass')) {
+    texContent = tikzCode;
+  } else {
+    let preamble = '';
+    let body = tikzCode;
+    const docStart = tikzCode.indexOf('\\begin{document}');
+    const docEnd = tikzCode.indexOf('\\end{document}');
+    if (docStart !== -1) {
+      preamble = tikzCode.substring(0, docStart);
+      body = docEnd !== -1 
+        ? tikzCode.substring(docStart + '\\begin{document}'.length, docEnd) 
+        : tikzCode.substring(docStart + '\\begin{document}'.length);
+    }
+    texContent = WRAPPER.replace('% TIKZ_CONTENT_PLACEHOLDER', body);
+    if (preamble.trim()) {
+      texContent = texContent.replace('\\begin{document}', preamble.trim() + '\n\\begin{document}');
+    }
+  }
   fs.writeFileSync(texPath, texContent, 'utf8');
 
   try {
@@ -58,15 +76,33 @@ function renderTikzToSvg(tikzCode, svgPath) {
   }
 }
 
-function processHtmlFile(filePath) {
-  let html = fs.readFileSync(filePath, 'utf8');
-  const tikzRegex = /```tikz\s*\n([\s\S]*?)\n```/g;
+function cleanTikzCode(htmlCode) {
+  // Strip all HTML tags
+  let text = htmlCode.replace(/<[^>]+>/g, '');
+  // Decode HTML entities
+  text = text
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&apos;/g, "'");
+  return text.trim();
+}
+
+function processRegex(html, regex, isHtmlFormat) {
   let match;
   let changed = false;
   const replacements = [];
 
-  while ((match = tikzRegex.exec(html)) !== null) {
-    const tikzCode = match[1].trim();
+  // Reset regex index to ensure it starts from 0
+  regex.lastIndex = 0;
+
+  while ((match = regex.exec(html)) !== null) {
+    const rawCode = match[1];
+    const tikzCode = isHtmlFormat ? cleanTikzCode(rawCode) : rawCode.trim();
+    if (!tikzCode) continue;
+
     const id = hash(tikzCode);
     const svgName = `tikz-${id}.svg`;
     const svgPath = path.join(OUT_DIR, svgName);
@@ -76,8 +112,7 @@ function processHtmlFile(filePath) {
       try {
         renderTikzToSvg(tikzCode, svgPath);
       } catch (err) {
-        console.error(`Failed to render tikz block in ${filePath}: ${err.message}`);
-        // Replace with a visible fallback pre block and continue
+        console.error(`Failed to render tikz block: ${err.message}`);
         const fallback = `<pre class="tikz-fallback">TikZ render failed. Code:\n${escapeHtml(tikzCode)}</pre>`;
         replacements.push({ start: match.index, end: match.index + match[0].length, html: fallback });
         changed = true;
@@ -92,15 +127,49 @@ function processHtmlFile(filePath) {
     changed = true;
   }
 
-  if (!changed) return;
-
-  // apply replacements from end to start to preserve indices
-  replacements.sort((a, b) => b.start - a.start);
-  for (const r of replacements) {
-    html = html.slice(0, r.start) + r.html + html.slice(r.end);
+  if (changed) {
+    // apply replacements from end to start to preserve indices
+    replacements.sort((a, b) => b.start - a.start);
+    for (const r of replacements) {
+      html = html.slice(0, r.start) + r.html + html.slice(r.end);
+    }
   }
-  fs.writeFileSync(filePath, html, 'utf8');
-  console.log(`Updated ${filePath}`);
+
+  return { html, changed };
+}
+
+function processHtmlFile(filePath) {
+  let html = fs.readFileSync(filePath, 'utf8');
+  let fileChanged = false;
+
+  // 1. Process figure blocks (rendered by rehype-pretty-code in Quartz)
+  const figureRegex = /<figure[^>]*>[\s\S]*?<code[^>]*data-language="tikz"[^>]*>([\s\S]*?)<\/code>[\s\S]*?<\/figure>/gi;
+  let res = processRegex(html, figureRegex, true);
+  if (res.changed) {
+    html = res.html;
+    fileChanged = true;
+  }
+
+  // 2. Process pre blocks with data-language="tikz" (plain rendering)
+  const preRegex = /<pre[^>]*data-language="tikz"[^>]*>([\s\S]*?)<\/pre>/gi;
+  res = processRegex(html, preRegex, true);
+  if (res.changed) {
+    html = res.html;
+    fileChanged = true;
+  }
+
+  // 3. Process raw backtick block (fallback for raw markdown)
+  const mdRegex = /```tikz\s*\n([\s\S]*?)\n```/g;
+  res = processRegex(html, mdRegex, false);
+  if (res.changed) {
+    html = res.html;
+    fileChanged = true;
+  }
+
+  if (fileChanged) {
+    fs.writeFileSync(filePath, html, 'utf8');
+    console.log(`Updated ${filePath}`);
+  }
 }
 
 function escapeHtml(s) {

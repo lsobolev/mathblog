@@ -29,6 +29,12 @@ jobs:
         with:
           node-version: 22
 
+      - name: Install TeX Live and dvisvgm
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra texlive-xetex dvisvgm poppler-utils
+          dvisvgm --version
+
       - name: Install Dependencies
         run: npm ci
 
@@ -36,7 +42,7 @@ jobs:
         run: npx quartz plugin install --from-config
 
       - name: Build Quartz
-        run: npx quartz build
+        run: npm run build:site
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
