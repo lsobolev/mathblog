@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
 configuration:
-  pageTitle: Lucas Sobolev
+  pageTitle: "Lucas Sobolev mathblog"
   pageTitleSuffix: ""
   enableSPA: true
   enablePopovers: true
@@ -78,7 +78,7 @@ plugins:
     enabled: true
     order: 40
   - source: github:quartz-community/table-of-contents
-    enabled: true
+    enabled: false
     order: 50
     layout:
       position: right
@@ -158,17 +158,10 @@ plugins:
     enabled: true
     options:
       title: "blogs"
+      folderDefaultState: "collapsed"
     layout:
       position: left
       priority: 50
-  - source: github:quartz-community/explorer
-    enabled: true
-    options:
-      title: "tags"
-      useSavedState: true
-    layout:
-      position: left
-      priority: 60
   - source: github:quartz-community/graph
     enabled: false
     layout:
@@ -183,7 +176,7 @@ plugins:
       groupOptions:
         grow: true
   - source: github:quartz-community/backlinks
-    enabled: true
+    enabled: false
     layout:
       position: right
       priority: 50
@@ -198,7 +191,7 @@ plugins:
       position: beforeBody
       priority: 20
   - source: github:quartz-community/tag-list
-    enabled: false
+    enabled: true
     layout:
       position: beforeBody
       priority: 30
@@ -292,22 +285,26 @@ layout:
       gap: 0.5rem
   byPageType:
     "404":
+      template: "full-width"
       positions:
         beforeBody: []
         left: []
         right: []
     content:
+      template: "full-width"
       positions:
         beforeBody: [breadcrumbs, article-title, content-meta, tag-list]
         left: [page-title, spacer, search, darkmode, reader-mode, explorer]
         right: []
     folder:
+      template: "full-width"
       exclude:
         - reader-mode
       positions:
         left: [page-title, spacer, search, darkmode, reader-mode, explorer]
         right: []
     tag:
+      template: "full-width"
       exclude:
         - reader-mode
       positions:
