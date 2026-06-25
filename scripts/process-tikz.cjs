@@ -64,10 +64,10 @@ function renderTikzToSvg(tikzCode, svgPath) {
     // Use pdflatex by default. Set env USE_XELATEX=1 to use xelatex instead.
     if (process.env.USE_XELATEX === '1') {
       run(`xelatex -no-pdf -interaction=nonstopmode -halt-on-error -output-directory ${tmpDir} ${texPath}`);
-      run(`dvisvgm --no-fonts ${tmpDir}/figure.xdv -o ${svgPath}`);
+      run(`dvisvgm --no-fonts --zoom=1.3 ${tmpDir}/figure.xdv -o ${svgPath}`);
     } else {
       run(`pdflatex -output-format=dvi -interaction=nonstopmode -halt-on-error -output-directory ${tmpDir} ${texPath}`);
-      run(`dvisvgm --no-fonts ${tmpDir}/figure.dvi -o ${svgPath}`);
+      run(`dvisvgm --no-fonts --zoom=1.3 ${tmpDir}/figure.dvi -o ${svgPath}`);
     }
   } finally {
     // cleanup temporary directory

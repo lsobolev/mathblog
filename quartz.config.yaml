@@ -316,8 +316,6 @@ layout:
         .page .center { max-width: 100% !important; }
         .page .body { grid-template-columns: var(--sidebar-width) 1fr !important; }
         footer p { display: none !important; }
-        div.quartz-tikz-container { display: flex; justify-content: center; margin: 1.5rem 0; width: 100%; }
-        div.quartz-tikz-container img { transform: scale(1.3); transform-origin: center; margin: 1rem 0; }
       positions:
         beforeBody: [breadcrumbs, article-title, content-meta, tag-list]
         left: [page-title, spacer, search, darkmode, reader-mode, explorer]

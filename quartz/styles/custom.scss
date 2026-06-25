@@ -1,3 +1,18 @@
 @use "./variables.scss" as *;
 
 // put your custom CSS here!
+
+// Center TikZ SVGs
+div.quartz-tikz-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1.5rem 0;
+  width: 100%;
+}
+
+// Fix KaTeX hookrightarrow rendering as emoji on macOS Safari/Chrome
+.katex {
+  font-family: KaTeX_Main, "Times New Roman", serif !important;
+}
+
