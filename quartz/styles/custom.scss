@@ -13,6 +13,6 @@ div.quartz-tikz-container {
 
 // Fix KaTeX hookrightarrow rendering as emoji on macOS Safari/Chrome
 .katex {
-  font-family: KaTeX_Main, "Times New Roman", serif !important;
+  font-variant-emoji: text;
 }
 
