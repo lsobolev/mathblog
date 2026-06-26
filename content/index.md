@@ -2,6 +2,11 @@
 title: Welcome to my mathblog!
 comments: false
 ---
+Hi! My name is Lucas Sobolev, and I am currently an honours student at the University of Queensland. My thesis is on the Weil conjectures and étale cohomology.
+
+I started this blog to mark some milestones that I have throughout my mathematical life. Selfishly, explicitly writing things out will force me to engage in the ideas more deeply. By making it public, I hope to help others that are also thinking about the things I either thought about, or am thinking about currently.
+
+If you spot any typos, or have any suggestions, please feel free to comment. I'm always open to suggestions!
 
 <link rel="stylesheet" href="https://tikzjax.com/v1/fonts.css">
 <script src="https://tikzjax.com/v1/tikzjax.js"></script>
