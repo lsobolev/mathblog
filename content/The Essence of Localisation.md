@@ -20,7 +20,26 @@ One typically shows in the form of an exercise that $\mathsf{D}_A(f) \cong \text
 
 Although this is satisfying to me, it doesn't really answer our original question. Since this is still very much algebraic. Fortunately, differential topology is very close in spirit to what we do in algebraic geometry -- things are done locally. Typically, the setting is that we want to do calculus on a manifold. We would do this by zooming into a neighbourhood of a point for which we can identify this neighbourhood with an open subset of $\mathbb{R}^n$. We can then do calculus before patching everything back together. But doing things locally shouldn't depend on what neighbourhood we pick; we should, in principle, be able to look 'even closer' than a given choice. 
 
-To stay grounded, in algebra, we can formalise this by taking a direct limit over all such neighbourhoods. But what are we taking a direct limit of? Localisation typically takes place in a ring -- so we should really be searching for a ring. A natural place to look is the ring of smooth functions on the manifold, $$\mathcal{C}^\infty(M) := \{f: M \to \mathbb{R} : f\text{ is smooth}\}$$where the ring operations are done pointwise. In fact, given any open set $U \subseteq M$, we have a similar construction $\mathcal{C}^\infty(U)$ of smooth functions on $U$. The point is, given a point $p \in M$, we can now form our desired direct limit to get the ring of *germs* of smooth functions at $p$, $$\mathcal{C}_p^\infty := \varinjlim \,\mathcal{C}^\infty(U).$$Maybe to be more fitting to our original assumptions of our target student, we can describe our germs as simply pairs modulo an equivalence relation, $$\mathcal{C}^\infty_p = \{(U, f) : U \subseteq M \text{ is an open neighbourhood of }p \text{ and }f \in \mathcal{C}^\infty(U)\}/{\sim}$$where two pairs are equivalent $(U,f) \sim (V, g)$ if there is an open neighbourhood $W \subseteq U \cap V$ of $p$ such that $f|_W = g|_W$. This seems closer to our idea of zooming in at a point. But, I claim, this is more than just a mere analogy to localisation. Why? Well consider the set of functions for which vanish at $p$, $$\mathfrak{m}_p := \{f \in \mathcal{C}^\infty(M) : f(p) = 0\}.$$It turns out, that $\mathfrak{m}_p$ is well suited enough to be called a *maximal ideal* of $\mathcal{C}^\infty(M)$. But not only that, if we now fast track a few years, and this differential topology student had learnt what localisation is formally, then we can say that $$\mathcal{C}^\infty(M)_{\mathfrak{m}_p} \cong \mathcal{C}^\infty_p$$are isomorphic! So really, this is *exactly* a kind of localisation. 
+To stay grounded, in algebra, we can formalise this by taking a direct limit over all such neighbourhoods. But what are we taking a direct limit of? Localisation typically takes place in a ring -- so we should really be searching for a ring. A natural place to look is the ring of smooth functions on the manifold, 
+$$
+\mathcal{C}^\infty(M) := \{f: M \to \mathbb{R} : f\text{ is smooth}\}
+$$
+where the ring operations are done pointwise. In fact, given any open set $U \subseteq M$, we have a similar construction $\mathcal{C}^\infty(U)$ of smooth functions on $U$. The point is, given a point $p \in M$, we can now form our desired direct limit to get the ring of *germs* of smooth functions at $p$, 
+$$
+\mathcal{C}_p^\infty := \varinjlim \,\mathcal{C}^\infty(U).
+$$
+Maybe to be more fitting to our original assumptions of our target student, we can describe our germs as simply pairs modulo an equivalence relation, 
+$$
+\mathcal{C}^\infty_p = \{(U, f) : U \subseteq M \text{ is an open neighbourhood of }p \text{ and }f \in \mathcal{C}^\infty(U)\}/{\sim}
+$$where two pairs are equivalent $(U,f) \sim (V, g)$ if there is an open neighbourhood $W \subseteq U \cap V$ of $p$ such that $f|_W = g|_W$. This seems closer to our idea of zooming in at a point. But, I claim, this is more than just a mere analogy to localisation. Why? Well consider the set of functions for which vanish at $p$, 
+$$
+\mathfrak{m}_p := \{f \in \mathcal{C}^\infty(M) : f(p) = 0\}.
+$$
+It turns out, that $\mathfrak{m}_p$ is well suited enough to be called a *maximal ideal* of $\mathcal{C}^\infty(M)$. But not only that, if we now fast track a few years, and this differential topology student had learnt what localisation is formally, then we can say that 
+$$
+\mathcal{C}^\infty(M)_{\mathfrak{m}_p} \cong \mathcal{C}^\infty_p
+$$
+are isomorphic! So really, this is *exactly* a kind of localisation. 
 
 The third distinct thought I had is really a question. How can I determine whether two localisations of a given ring are the same? If I have a ring $A$, and two multiplicatively closed subsets $S$ and $T$, what makes their localisations $S^{-1}A$ and $T^{-1}A$ isomorphic? Perhaps weirdly, this question came about from topology. If we have a (path connected) topological space $X$ then for each point $x \in X$, the inclusion functor 
 $$
