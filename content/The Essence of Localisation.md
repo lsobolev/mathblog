@@ -31,7 +31,8 @@ $$
 Maybe to be more fitting to our original assumptions of our target student, we can describe our germs as simply pairs modulo an equivalence relation, 
 $$
 \mathcal{C}^\infty_p = \{(U, f) : U \subseteq M \text{ is an open neighbourhood of }p \text{ and }f \in \mathcal{C}^\infty(U)\}/{\sim}
-$$where two pairs are equivalent $(U,f) \sim (V, g)$ if there is an open neighbourhood $W \subseteq U \cap V$ of $p$ such that $f|_W = g|_W$. This seems closer to our idea of zooming in at a point. But, I claim, this is more than just a mere analogy to localisation. Why? Well consider the set of functions for which vanish at $p$, 
+$$
+where two pairs are equivalent $(U,f) \sim (V, g)$ if there is an open neighbourhood $W \subseteq U \cap V$ of $p$ such that $f|_W = g|_W$. This seems closer to our idea of zooming in at a point. But, I claim, this is more than just a mere analogy to localisation. Why? Well consider the set of functions for which vanish at $p$, 
 $$
 \mathfrak{m}_p := \{f \in \mathcal{C}^\infty(M) : f(p) = 0\}.
 $$
