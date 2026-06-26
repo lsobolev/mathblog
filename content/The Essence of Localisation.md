@@ -56,16 +56,5 @@ $$
 as $A$-algebras if and only if $\widehat{S} = \widehat{T}$. In other words, the cluttered choice $\widehat{(\bullet)}$ is like our 'cleaner' choice (our skeleton!) of multiplicative subset.
 
 
- 
-
-
-- Localisation is about controlling what the prime ideals are in a ring.
-- Saturation of a multiplicatively closed subset is like the 'skeleton' of the localisation.
-- Although localisation feels entirely algebraic, it controlling the prime ideals is like controlling arithmetic.
-- Masoud's comment on localisation geometrically.
-
-
-
-
 
 #Blog
