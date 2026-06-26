@@ -1,7 +1,5 @@
 @use "./variables.scss" as *;
 
-// put your custom CSS here!
-
 // Center TikZ SVGs
 div.quartz-tikz-container {
   display: flex;
@@ -16,3 +14,7 @@ div.quartz-tikz-container {
   font-variant-emoji: text;
 }
 
+// The exact selector Quartz v5 uses for Dark Mode
+html[saved-theme="dark"] div.quartz-tikz-container img {
+  filter: invert(1) hue-rotate(180deg) brightness(1.8) contrast(2) !important;
+}
